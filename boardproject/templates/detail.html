@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block customcss %}
+
+{% endblock customcss %}
+
+{% block header %}
+<div class="alert alert-info" role="alert">
+        header
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
+        <div class="alert alert-primary" role="alert">
+                <p>title:{{ object.title }}</p>
+                <p>Contributor:{{ object.author }}</p>
+                <p>Contents:{{ object.content }}</p>
+                <p><img src='{{object.images.url }}'> </p>
+                <p>test </p>
+                <a href="{% url 'good' object.pk %}" class="btn btn-primary " role="button" aria-pressed="true">good!{{ object.good }}</a>
+                <a href="{% url 'read' object.pk %}" class="btn btn-primary " role="button" aria-pressed="true">read!{{ object.read }}</a>
+        </div>
+</div>
+{% endblock content %}

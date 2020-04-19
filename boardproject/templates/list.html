@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block customcss %}
+
+{% endblock customcss %}
+
+{% block header %}
+<div class="alert alert-info" role="alert">
+        header
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
+        {% for item in object_list %}
+<div class="alert alert-primary" role="alert">
+        <p>title:<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
+        <p>Contributor:{{ item.author }}</p>
+                <a href="{% url 'good' item.pk %}" class="btn btn-primary " role="button" aria-pressed="true">good!{{ item.good }}</a>
+                <a href="{% url 'read' item.pk %}" class="btn btn-primary " role="button" aria-pressed="true">read!{{ item.read }}</a>
+
+        this is content
+</div>
+{% endfor %}
+<a href="{% url 'logout' %}">>logout</a>
+</div>
+{% endblock content %}

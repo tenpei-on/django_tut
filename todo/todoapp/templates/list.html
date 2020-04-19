@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+                <h1 class="display-4">TodoList</h1>
+                <p class="lead">this is list of todo</p>
+        </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+        <a href="{% url 'rcreate' %}" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">create</a>
+        {% for item in object_list %}
+        <p>{{ item.title }}    limit:{{item.duedate}}
+        <div class="alert-{{ item.priority }}" role="alert">
+                <p>{{ item.title }}</p>
+                <a href="{% url 'rupdate' item.pk %}" class="btn btn-danger " tabindex="-1" role="button" aria-disabled="true">edit</a>
+                <a href="{% url 'rdelete' item.pk %}" class="btn btn-secondary " tabindex="-1" role="button" aria-disabled="true">drop</a>
+                <a href="{% url 'rdetail' item.pk %}" class="btn btn-primary " tabindex="-1" role="button" aria-disabled="true">detail</a>
+        </div>
+        {% endfor %}
+        {% endblock content %}
